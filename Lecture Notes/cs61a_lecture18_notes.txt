@@ -1,0 +1,89 @@
+Type Coercion
+    Idea: Some types can be converted into other types
+    Takes advantage of structure in the type system
+
+Applying Operators with Coercion
+    class Number:
+        def __add__(self, other):
+            x, y = self.coerce(other)
+            return x.add(y)
+        
+        def coerce(self, other):
+            if self.type_tag == other.type_tag:
+                return self, other
+            elif (self.type_tag, other.type_tag) in self.coercions:
+                return (self.coerce_to(other.type_tag), other)
+            elif (other.type_tag, self.type_tag) in self.coercions:
+                return (self, other.coerce_to(self.type_tag))
+
+        def coerce_to(self, other_tag):
+            coercion_fn = ----
+
+Coercion Analysis
+    Minimal violation of abstraction barriers: we define cross-type  coercion as necessary
+    Requires that all types can be coerced into a common type
+
+
+Beginning of March 6, 2014 Lecture
+
+Linked List Structure
+    A linked list is either empty or a first value and the rest of the linked list
+    The first (zeroth) element is an attribute value
+    The rest of the elements are stored in a linked list
+    A linked list is part
+    Syntax:
+        Link(3, Link(4, Link(5, Link.empty)))
+    Note:
+        Innermost link gets evaluated first, and they get passed into each successive linked list
+
+Linked List Class
+    Linked list class: attributes are passed to __init__
+    Built-in:
+        isinstance(item, attr)
+        Return whether an object is an instance of a class or of a subclass thereof. 
+    Linked lists are intrinsically recursive
+Sequence Operations
+    Linked List represent sequences
+        We want to able to __getitem__ to be able to get items in the linked List
+        We want __len__ to find the length of the links
+        Note:
+            The above are built into python
+    These sequences operators operate recursively on linked lists
+    Ex:
+    def __getitem__(self, index):
+        if index == 0:
+            return self.first
+        else:
+            return self.rest[index -1]
+
+    def __len__(self):
+        return 1 + len(self.rest)
+
+    The base case for these recursive methods are the empty link (i.e. empty = ())
+
+    Usual base case:
+        if linked_list is Link.empty:
+            return linked_list
+    Sample recursive:
+        else:
+            return Link(linked_list.first, recursive_function(linked_list.rest, *args))
+            #first is the first item in linked list, rest is the rest of linked list which is itself
+            a linked list
+
+Important code:
+def partitions(n, m):
+    if n == 0:
+        return Link(Link.empty)
+    elif n < 0 or m == 0:
+        return Link.empty
+    else:
+        using_m = partitions(n - m, m)
+        with_m = map_link(lambda p: Link(m, p), using_m)
+
+        without_m = partitions(n, m-1)
+
+        return extend_link(with_m, without_m)
+
+
+
+

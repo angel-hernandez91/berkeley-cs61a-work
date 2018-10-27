@@ -1,0 +1,50 @@
+CS61a Lecture 20 Notes March 11, 2015
+
+Guerrilla section this weekend on recursive data
+
+Time
+The Consumption of Time
+    Implementations of the same function abstraction can require different amounts of time.
+
+Space
+The Consumption of Space
+    Which environment frames do we need to keep around during evaluation
+    At any moment there is a set of active environments
+    Values and frames in active environments consume memory
+    Memory that is used for other values and frames can be recycled
+
+    Active environments:
+        Environments for any function calls currently being evaluated
+            How many function calls be been made, but not yet returned
+        Parent environments of functions name in active environments
+
+Orders of Growth
+    A method for bounding the resources used by a function by the 'size' of a problem
+    A description of how long algorithm takes to run, or take up space
+
+    n: size of the problem
+    R(n): measurement of some resource used (time or space)
+
+    R(n) = \theta(f(n))
+    means that there are positive constants k1 and k2 such that
+    k1*f(n) \leq R(n) \leq k2 * f(n)
+    for all n and some minimum m
+
+    That is theta is both bounded above and below by some positive constants 
+
+Comparing Orders of Growth
+Constants: Contant terms do not affect the order of growth of a process
+Logarithms: The base of a logarithm does not affect the order of growth of a process
+
+Nesting: When an inner process is repeated for each step in an outer process, multiply the steps
+in the outer and inner processes to find the total number of steps
+
+Lower-order terms: The fastest-growing terms of a computation is only present
+
+Know:
+    Expotential
+    Quadratic
+    Linear
+    Square root
+    Log n
+    Constant

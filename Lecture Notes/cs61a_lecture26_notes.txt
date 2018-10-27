@@ -1,0 +1,88 @@
+CS61a Lecture 26 Notes April 3, 2015
+
+A computer typically executes programs written in many different programming languages
+
+Machine Languages:
+    statements are interpreted by the hardware itself
+    *A fixed set of instructions invoke operations implemented by the circuitry of the central
+     processing unit
+    *Operations refer to specific hardware memory addresses; no abstraction mechanisms
+
+High-level languages: statements & expressions are interpreted by another program or
+                      compiled (translated) into another language
+    Provide means of abstraction such as naming, function definition, and objects
+    Abstract away system details to be independent of hardware and operating system
+        Interpreter running on many different machines and platforms
+
+from dis import
+dis(square) <-- displays the python 3 byte code
+
+Metalinguistic Abstraction
+    A powerful form of abstraction is to define a new language that is tailored to a particular
+    type of application or problem domain
+    
+    Type of application: Erlang was designed for concurrent programs. It has built-in elements
+                         for expressing concurrent communication. It is used, for example, to 
+                         implement chat servers with simulatenous connections
+    Problem domain: The MediaWiki mark-up language was designed for generating static web 
+                    pages. It has built-in elements for text formatting and page linking
+
+    A programming language ahs:
+        Syntax: The legal statments and expressions in the language
+        Semantics: The execution/evaluation rule for those statements and expressions
+
+    To create a new programming language, you either:
+        Specification: A document describing the syntax and semantics of the language
+        Canonical Implementation: An interpreter is created for the language
+
+Parsing
+    Reading Scheme Lists
+        A scheme list is written as elements in parentheses
+        Each <element> can be a combination or primitive
+        The task of parsing a language involves coercing a string representation of an expression
+        to the expression itself
+            Parsers must validate that expressions are well-formed
+
+    A parser takes in text and returns an expression
+    Lexical Analysis breaks apart input text into its separate constitutates (i.e. tokens)
+        It is iterative
+        Chekcs for malformed tokens
+        Determines type
+        One line at a 14:35
+    Syntatix Analaysis checks the syntax of the input text and builds an expression tree to 
+    evaluate it
+        Tree recursive
+        Checks syntax
+        Multline
+
+Recursive Syntactic Analysis
+    A predictive recursive descent parser inspects only k tokens to decide how to proceed, for
+    some fixed k
+
+Syntactic Analysis
+    Syntactic analysis indentifies the hierarchical structure of an expression, which may be nested
+
+    Each call to scheme_read consumes the input tokens for exactly one expression
+    Base case:
+        symbols and numbers
+    Recursive call: scheme_read subexpressions until closing parentheses are read
+
+The Pair Class
+    The pair class represents Scheme pairs and lists. A list is a pair whose second element is 
+    either a list or nil
+
+Scheme expressions are represented as Scheme lists! Source code is data
+
+The Eval Function
+    The eval function computes the value of an expression, which is always a number
+    It is a generic function that dispatches on the type of the expression (primitive or call)
+
+
+
+
+
+
+
+
+
+

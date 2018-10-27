@@ -1,0 +1,44 @@
+CS61a Lecture 11 February 18, 2015
+
+The Closure Property of Data Types
+	A method for combining data values satisfies the closure property if:
+		The result of combination can itself be combined using the same method
+	Closure is powerful because it permits us to create hierarchical structures
+	Hierarchical structures are made up of parts, which themselves are made up of parts 	and so on
+		*Lists are useful for constructing these structures, since lists can contain all
+		 sorts of different things
+
+Box-and-Pointer Notation in Environment Diagrams
+    Lists are represented as primitive value or points to a compound value
+    Boxes contain the elements of the list index from from 0 to n
+        Can have lists within lists
+	Each item in a list that has multiple parts opens up a new box diagram with an arrow
+	pointing to it
+
+Membership and Slicing
+    Python sequences have operators for membership and slicing
+    Membership
+        Tells you if a value is in a sequence or not
+        Use operators: in, not in
+    Slicing
+        Cuts a list in a partition, returns another list
+        Use operators: [:a], [a:], [a: b], [:] (returns whole list)
+            Does not include upper bound b
+
+Trees
+Tree Abstraction
+    A tree has a root value and a sequence of branches; each branch is a tree
+    A tree with zero branches is called a leaf (i.e. the end nodes)
+    The root values of sub-trees within a tree are often called values or nodes
+Implementing the Tree Abstraction
+    See lecture slides for code
+
+Tree Processing Uses Recursion
+    We can use the summation function on lists, but we must pass in an empty list
+	to begin the summation process:
+		i.e. sum(list, [])
+	Processing a leaf is often the base case of a tree processing function
+	
+    the recursive case typically makes a recursive call on each branch =, then aggregates
+
+

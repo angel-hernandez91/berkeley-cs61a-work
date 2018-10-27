@@ -1,0 +1,20 @@
+CS61a Lecture 37 April 29 2015
+
+Ambiguity
+
+
+Context-Free Grammar Rules
+    A grammar rule describes how a tag can be expanded a sequence of tags or words
+    S --> NP VP
+    NP --> N
+    N --> Some noun
+    VP --> V NP
+    V --> Some verb
+
+Exhaustive Parsing
+    Expand all tags recursively, but constrain words to match input
+
+Scoring a Tree Using Relative Frequencies
+    Not all syntactic structures are equally common
+
+

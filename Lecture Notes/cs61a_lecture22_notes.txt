@@ -1,0 +1,98 @@
+CS61a Lecture 22 March 30, 2015
+
+Scheme
+    Dialect of lisp
+
+Scheme Fundamentals
+    Scheme programs consist of expressions, which can be:
+        Primative: 2, 3.3, true, +, quotient
+        Combinations: (quotient 10 2) (not true)
+            Only syntax (). Everything goes in parenthesis
+    
+    Numbers are self-evaluating; symbols are bound to values
+        Names in Scheme are called symbols
+
+    Combinations are call expressions. They include an operator and 0 or more operands in 
+    parenthesis
+    > (quotient 10 2)
+    5
+    Nesting is possible!
+    Combinations can span multiple lines (spacing doesn't matter)
+    
+    Type system
+    >(number? 2)
+    True
+    >(zero? 0)
+    True
+    Syntax: (thing? <symbol you want to check> )
+    #t, #f (true and false repsectively)
+
+Special Forms
+    A combination that is not a call expression is a special form:
+        *if expression: (if <predicate> <consequent> <alternative>)
+        Evaluation:
+            1. Evaluate the predicate expression
+            2. Evaluate either the consequent or alternative
+        *and, or (and <e1> ... <en>)
+
+        *Binding symbols: (define <symbol> <expression>)
+            >(define pi 3.14)
+            >(* pi 2)
+            6.28
+
+        *New procedures (functions):
+            (define (<symbol> <formal parameters>) <body> )
+
+    Note: in Scheme the only thing thats false is false, everything else is true. Except for
+    a thing that denero hasn't mentioned yet
+
+Loading a file:
+    >(load 'file_name.scm)
+
+
+Scheme Interpreters
+    Project 4
+
+Lambda Expressions
+    Lambda expressions evaluate to anonymous procedures
+        (lambda (<formal-parameters>) <body> )
+
+    An operator can be a call expression too:
+        ((lambda (x y z) (+ x y (square z))) 1 2 3 )
+
+Pairs and Lists (Data)
+    In the late 1950s, computer scientists used confusing names:
+    Memorize:
+        *cons: Two-argument procedure that creates a pair
+        *car: Procedure that returns the first  element of a pair
+        *cdr: Procedure that returns the second element of a pair
+        *nil: The empty list
+
+    They also used a non-obvious notation for linked lists
+        A linked list in Scheme is a pair in which the second elemnt is nil or Scheme list
+        Important! Scheme lists are written in parenthesis separated by spaces
+        A dotted list has any value for the second elment of the last pair; maybe not a list
+
+        ( 1 2 3 4) in scheme is  linked list
+
+        Every list is a pair
+        Thing after dot is not a list
+
+        (list 1 2 3) builds linked list
+
+Symbolic Programming
+    Symbols normally refer to values; how do we refer to symbols?
+    Quotation is used to refer to symbols directly in Lisp.
+    single quote mark 'a
+    >(list 'a 'b )
+    (a b)
+
+    Quotation can also be applied to combinations to form lists
+    >(car '(a b c))
+
+Understand last slide: Scheme Lists and Quotation:
+
+    Dots can be used in a quoted list to specify the second element of the final pair.
+
+
+

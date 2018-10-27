@@ -1,0 +1,47 @@
+CS61a Lecture 17 Notes March 4, 2015
+
+Generic Functions of Multiple Arguments
+    A function might want to operate on multiple data types
+        Do not necessarily need to share a common interface
+            We use type dispatching and type coercion to overcome this
+
+Special Method Names in Python
+    Certain names are special because they have built-in behavior
+    These names always start and end with two underscores
+        Ex:
+            __init__ invoked on construction
+            __repr__ invoked to display an object as a string
+            __add__  invoked to add one object to another
+            __bool__ invoked to change truth value of an object
+The Independence of Data Types
+    Data abstraction and class definitions keep types separate
+    Some operations need access to the implementation of two different abstractions
+
+Type Dispatching
+    Define a different function for each possible combination of types for which an operation is value
+    We can do things like:
+        Rational.type_tag = 'rat'
+        Complex.type_tag = 'com'
+
+Type Dispatching Analysis
+    Minimal violation of abstraction barriers: we define cross-type functions as necessary
+        This is the only time you can violate abstraction barriers
+    Extensible: Any new numeric type can "install" itself into the existing system by adding new
+    entries to the cross-type dictionaries
+
+    Question: How many cross-type implementations are required for m types and n operations?
+    Ans: m*(m-1)*n
+
+Coercion
+    Idea: Some types can be converted into other types
+    Takes advantage of structure in the type system
+    i.e.
+        We can turn a rational number into a Complex number
+
+Coercion Analysis
+    Minimal violation of abstraction barriers: we define cross-type coercion as necessary
+    Requires that all types can be coerced into a common type
+    More sharing: All operators use the same coercion scheme
+        This can save you time if where are many operations and types that need be operated on 
+        across different type
+

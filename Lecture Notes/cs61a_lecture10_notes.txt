@@ -1,0 +1,210 @@
+cs61a Lecture 10 Notes February 13, 2015
+
+Homework 3 is now due Thursday 2/19 @ 11:59pm
+
+Sequences
+The Sequence Abstraction
+    There isn't just one sequence class or data abstraction
+    The sequence abstraction is a collection of behaviors
+        Length: finite
+        Element Slection: non-negative, starts at 0, end at 1 integer less than length
+    A list is a kind of built-in sequence
+
+Lists
+    Finite elements
+    Can be bound to a name
+    Expressions are evaluated in the list
+    Elements from the list can be selected and be used to evaluate a list
+        Using list_name[item] notation
+        To get last element list_name[-1] (python shorthand)
+            Also last_element = list_name[len(list_name) -1]
+    Lists can be added together
+    Lists within lists
+        Select using: list_name[outer_index][inner_index]
+
+For Statements
+Code:
+def count(s, value):
+    total, index = 0, 0
+    while index < len(s):
+    
+        if s[index] == value:
+            total += 1
+        index += 1
+    return total
+
+Using a for statement:
+def count(s, value):
+    tota = 0
+    for elem in s:
+        if elem == value:
+            total += 1
+    return total
+To interate through list and count the index use:
+for i, elem in enumerate(s):
+
+Sequence iteration
+    Name (elem) bound in the first frame of the current environment (not a new frame)
+
+For Statement Execution Procedure
+    1. Evaluate the header <expression>, which must yield an iterable value (a sequence)
+    2. For each element in that sequence, in order:
+        a. Bind <name> to that element in the current frame
+        b. Execute <suite>
+
+Sequence Unpacking in For Statements
+    Can iterate through sequences of sequences by
+        for x, y in pairs
+        each list in a list of fixed length gets a name for each element in inner list
+
+Ranges
+    A range is a sequence of consecutive intergers.*
+        *ranges can actually represent more general integer sequences
+
+    range(a, b)
+        Lower bound a include, upper bound b exluded
+        length: ending value - starting value
+        element slection: starting value + index
+    list(range(a, b)) <<< list constructor
+        we call list on range to create list to in order to see what is contained in the range
+    range is sequence
+        Can call elements in it by
+            range(0, 4)
+            range(4)[2]
+
+Doing a thing multiple times:
+
+def cheer():
+    for _ in range(3):
+        print('Go Bears!')
+
+_ is a single to programmers that this name is not going to appear anywhere else
+
+List Comprehensions
+    odds = [1, 3, 5, 7, 9]
+    [x+1 for x in oods]
+    >>>[2, 4, 6, 8, 10]
+    Transforms a list, to another list by some given Transformation
+    
+    Can also do things like:
+    [x for x in odds if 25%x == 0]
+    >>>[1, 5]
+    That is, we can put conditions in list comprehensions
+
+def divisors(n):
+    return [1] + [x for x in range(2, n) if n%x == 0]
+#perfect numbers
+[n for n in range(1000) if sum(divisors(n)) == 0]
+
+Execution procedure
+    1. Add a new frame with the current frame as its parent
+    2. Create an empty result list that is the value of the expression
+    3. 
+
+
+Strings (another type of sequence, letters = characters)
+    Strings are an abstraction
+        We don't care how they are represented, or encoded in the lower level hard where
+    Text that represents data with strings
+        function: exec <<< executes a string
+    \n : new line
+    \: A blackslash "escape" the following character
+    print("\a"): alarm 
+
+    Length and element slection are similar to all sequences
+    Careful: An element of a string is itself a string, but with only one element
+
+Dictionaries
+    Created using curly braces {}
+    Order changes
+    Example:
+        {'I': 1, 'V': 5, 'X': 10}
+        Call keys using
+            dict_name['key']
+        dict function turns a paired list into a dictionary
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

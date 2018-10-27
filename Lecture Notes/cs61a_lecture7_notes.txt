@@ -1,0 +1,20 @@
+CS61a Lecture 7 February 4th, 2015
+
+Order of Recursive Calls
+	Note: print(n) binds n to a value, in environment diagrams
+		  if there is no specific return statement, the default return is none.
+
+	Anything that comes after a recursive call is not computed until the recursion stops (i.e. it doesn’t stop until a Return value appears.)
+	
+	Once a return statement is reached nothing is executed after it. 
+
+In recursive functions put the base case first. <-- you’ll have an easier time.
+
+Tree Recursion
+	Tree-shaped processes arise whenever executing the body of a recursive function makes more than one recursive call
+
+Repetition in Tree-Recursive Computation
+	This process is highly repetitive. There is techique that reduces the amount of repitions. 
+
+Counting Partitions
+	The number of partitions of a positive integer n, using parts of up size m, is the number of ways in which n can be expressed as the sum of positive integer parts up to m in increasing order. 

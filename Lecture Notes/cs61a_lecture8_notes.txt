@@ -1,0 +1,44 @@
+CS61a Lecture 7 Notes February 6th, 2015
+
+Midterm at 7pm - 9pm in 145 Dwinelle.
+    1 page handwritten study guide
+
+    HKN review session on Saturday 2/7 2050 VLSB 1 - 4
+    Review seesion Sunday 1 Pimentel 1-2:30 and 2:30 - 4
+
+    No lecture Monday 2/9
+    No lab or office hours on Tuesday 2/10 or Wednesday 2/11
+
+Abstraction
+    Functional Abstractions
+        Intrinsic name: the original name of a function
+        Need to know how man arguments a function takes
+        What the function does, but no necessarily how
+
+Alternative GCD
+
+def gcd(m, n):
+
+if m == n:
+    return m
+elif m < n:
+    return gcd(n, m)
+else:
+    gcd(m - n, n)
+
+Decorators
+    What do they do?
+        They're a higher order function. That can be added to the top of another function using the @<function> decorator
+        It is similar to binding the functions name to the result of calling the decorator on the function.
+
+Currying
+    A higher order procedure that turns a function with multiple arguments into a single argument higher order function.
+    This can be done to any such function.
+
+Review:
+    What would python print?
+    Interactive output: >>> in terminal
+    Evaluates to: what it returns
+    
+
+

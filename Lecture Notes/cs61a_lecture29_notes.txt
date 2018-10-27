@@ -1,0 +1,109 @@
+CS61a Lecture 29 Notes April 10, 2015
+
+Data Processing
+    Many data sets can be processed sequentially:
+        The set of all Twitter posts
+        Votes cast in an election
+        Sensor readings of an airplane
+        Ordering of the positive integers
+
+However, the sequence interface we used before does not always apply
+    A sequence has a finite, known length
+    A sequence allows element selection for any element
+
+Important ideas in big data processing
+    Implicit representations of streams of sequential data
+    Declarative programming languages to manipulate and transform data
+        take a pool of data and preform computation over it
+    Distributed and parallel computing
+
+Implicit sequences
+    Doesn't explicitly store each element of the data set in the computer
+    Space is not proportional to the size of the data set
+    Def:
+        An implicity sequence is a representation of sequential data that does not explicitly
+        store each element
+    Ex:
+        The built-in range class represents consecutive integers
+        The range is represented by two values: start and end
+        The length and elements are computed on demand
+        Constant space for arbitrarily long sequences
+
+Iterators
+    An iterator is an object that can provide the next element of a sequence
+    The __next__ method of an iterator returns the next element
+    The built-in next function invokes the __next__ method on its argument
+    If there is not next element, then the __next__ method of an iterator should raise a 
+        StopIteration exception.
+
+Iterable Objects
+    Interator: Mutable object that tracks a position in a sequence, advancing on __next__.
+    Iterable: Represents a sequence and returns a new iterator on __iter__.
+              (i.e. Iterables have an iter method)
+
+    LetterIter is an iterator:
+        Walks over the contents of Letters below:
+    Letters is iterable:
+        ie Letters('a', 'e'): 'a' 'b' 'c' 'd'
+
+Any sequential data can be represented as long as we can figure out how to get from the current
+element to the next element via some iterator
+
+Built in Iterators
+    Many built-in Python sequence operations return iterators that compute results lazily
+    To view the results, place the resulting elements in a sequence
+
+The For Statement
+    for <name> in <expression>:
+        <suite>
+    1. Evaluate the header <expression>, which yields an iterable object.
+    2. For each element in that sequence, in order:
+        A. Bind <name> to that element in the first frame of the current environment.
+        B. Execute the <suite>,
+
+    When executing a for statement, __iter__ returns an iterator and __next__ provides
+    each item
+
+Generator Functions
+    Deep relationship between functions and iterators
+    Instead of returning values it yields values
+    A generator function can yield many ties
+
+    A generator is an iterator, created by a generator function
+    A generator function is a function that yeilds values instead of returning them
+    A normal function returns once; a generator function yields multiple times
+    When a generator function is called, it returns a generator that iterations over yields
+Ex:
+
+def letters_generator(next_letter, end):
+    while next_letter < end:
+        yield next_letter
+        next_letter = char(ord(next_letter) + 1)
+
+^creates an iterator on the fly
+
+for letter in letters_generator('a', 'e'):
+    print(letter)
+
+We can define a letter generator function instead a letter class that does the same
+amount of work. Why do this? Advantages?
+    Don't need a class, (self); also don't need to raise any errors
+    Simplification mechanism
+
+
+    StopIteration  happens automatically when we get to the end of yield
+    (i.e. we run out of things to yield)
+
+This generator function can be used in a for statement
+
+
+
+
+
+
+
+
+
+
+
+

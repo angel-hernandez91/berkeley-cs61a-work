@@ -1,0 +1,73 @@
+CS 61a Lecture 27 April 6, 2015
+
+Interpreting Scheme: The Structure of the Interpreter
+
+Structure:
+    Eval Function
+        Evaluates primitive and combined expressions (when one is found apply is called)
+        Recursive.
+        Base cases:
+            Primitive values (i.e. Numbers)
+            *Look up values bound to symbols
+        Recursive calls:
+            Eval (operator, operands) of call expressions
+            Apply (procedure, arguments)
+            *Eval sub-expressions of special forms (ie functions)
+    Apply Function
+        Base cases:
+            Built-in primitive procedures
+
+        Recursive calls:
+            Eval(body) of user-defined procedures.
+    Both eval and apply can call each other and sometimes they call themselves
+
+    Eval requires an environment for symbol lookup
+    Apply creates a new environment each time a user-defined procedure is applied.
+
+Special Forms
+    Scheme Evaluation
+        The scheme_eval functions dispatches on expression form:
+            Symbols are bound to values in the current environment
+            Self-evaluating expressions are returned
+            All other legal expressions are represented as Scheme lists, called combinations
+        Special forms are identified by the first list element
+        Any combination that is not a known special form is a call expression
+Logical Forms
+    Logical Special Forms
+    Logical forms may only evaluate some sub-expressions
+        If
+        and, or
+        Cond
+    The value of an if expression is the value of a subexpression 
+        Evaluate the predicate
+        Choose a sub-expression: <consequent> or <alternative>
+        Evaluate that sub-expression in place of the whole expression
+Quotation
+    The quote special form evaluates to the quoted expression, which is not evaluated
+    (quote <expression> ) expression is not evaluated, it is converted a scheme list
+    The <expression> itself is the value of the expression
+        shorthand: '<expression>
+
+Lambda Expressions
+    Lambda expressions evaluate to user-defined procedures
+        (lambda (<formal-parameters>) <body> )
+
+Frames and Environments
+    A frame represents an environment by have a parent frame
+    Frames are Python instances with methods lookup and define
+    Frames do not hold return values (in Project 4)
+
+Define Expressions
+    Define binds a symbol to a value in the first frame of the current environment
+        1. Evaluate the <expression>
+        2. Bind <name> to its value in the current frame
+
+    Procedure definition is shorthand of define with a lambda expression
+
+Applying User-defined Procedures
+    To apply a user-defined procedure, create a new frame in which formal parameters are bound
+    to argument values
+    Evaluate the body of the procedure in the environment that starts with this new frame
+
+
+

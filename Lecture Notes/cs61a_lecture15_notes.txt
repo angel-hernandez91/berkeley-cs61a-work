@@ -1,0 +1,59 @@
+CS61a Lecutre 14 Notes February 27, 2015
+
+Inheritance 
+    Powerful idea in Object-Oriented Programming
+    Def: a way of relating similar classes together
+    Common use: a specialized class inherits from a more general class
+    Syntax:
+        class <new class>(<base class>):
+        *where new class the class we want to inherit attributes from the base class
+    The new class shares attributes with the base class, and overrides certain attributes
+    Implementing the new class is now as simple as specifying how it's different from
+    the base class
+
+Say we have a class:
+    class Account:
+        """ A bank account."""
+And we want to create a specified bank accout, say a Checking Account
+    class Checking Account(Account):
+To create this account, all we have to do is specify how a checking account differs
+from a regular bank account
+    Overriding: can override base class attributes in the class thats going to inherit
+    from the base class
+    Can also add new attributes
+    Can call base class methods, and change the arguments in it based on how different
+    the method needs to be
+
+Attribute Look Up
+To look up a name in class;
+    1. If the name is in the attributes of the class, return the corresponding value
+    2. If not found, look up the name in the base class, if there is one
+Base class attributes are not copied into subclasses!
+
+Subclasses don't need an __init__ method since we can get the from one the base class
+
+Designing for Inheritance
+    *Don't repeat yourself! Use existing implementations
+    *Reuse overriden attributes by accessing them through the base class
+    *Look up attributes on instances if possible
+
+Inheritance vs Composition
+    Inheritance: relating two classes through specifying similarities and differences
+        Represents 'is a' relationships
+    Composition: connecting two classes through their relationship to one another
+        Represents a 'has a'relationships
+
+
+Multiple Inheritance
+    In Python, a class can inherit from multiple base classes
+    This exists in many but not all object-oriented languages
+    This is tricky and often dangerous
+class BestAccount(CheckingAccount, SavingsAccount):  
+    def __init__(self, account_holder): 
+        self.holder = account_holder  
+        self.balance = 1 # best deal ever
+Checks attributes from leftmost to right most arguments that the subclass is inheriting
+pass <... Syntax. Doesn't nothing. It's a place holder. 
+
+s
+

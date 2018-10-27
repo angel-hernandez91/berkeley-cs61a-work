@@ -1,0 +1,38 @@
+CS61a Lecture 32 Notes April 22, 2015
+
+Joining Two Tables
+    Two tables A and B are joined by a comma to yield all combos of a row from A and a row
+    from B
+
+    Example:
+        Assume two tables 'dogs' and 'parents'
+        select parent from parents, dogs
+                where child = name and fur = 'curly'
+        Note that here we are assuming the column names are unambiguous
+
+Aliases and Ambiguity
+    Two tables may share a column name; dot expressions and aliases disambiguate column 
+    values
+        Syntax:
+            select [columns] from [table] where [condition] order by [order];
+    [table] is a comma-separated list of table names with optional aliases
+    Select all pairs of siblings
+        Syntax:
+            select a.child as first, b.child as second 
+                from parents as a, parents as b
+                where a.parent = b. parent and a.child < b.child
+Joining Multiple Tables
+    Multiple tables can be joined to yield all combinations of rows from each
+
+Numerical Expressions
+    Expressions can contain function calls and arithmetic operators
+
+String Expressions
+    String values can be combined to form longer strings
+    Basic string manipulation is built into SQL, but differs from Python
+    Syntax Example:
+        select 'hello,' || ' words';
+
+Query Planning
+    The manner in which tables are filtered, sorted, and joined affects execution time.
+

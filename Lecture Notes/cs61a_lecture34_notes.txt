@@ -1,0 +1,25 @@
+CS61a Lecture 34 Notes April 22, 2015
+
+Aggregation (with SQL)
+    So far, all SQl expressions have referred to the values in a single row at a time.
+    An aggregate function in the [columns] clause computes a value from a group of rows
+    These are suppose to appear in the column description, not in where clauses
+
+
+Mixing Aggregate Functions and Single Values
+    An aggregate function also selects a row in the table, which may be meaningful
+    If there are multiple sensible answers, it returns an arbitrary answer that satisfy the
+    aggregate function
+
+Grouping Rows
+    Rows in a table can be grouped, and aggregation is performed on each group
+    The number of groups is the number of unique values an expression
+
+where filters individual rows
+having filters whole groups and allows aggregate functions in the expression
+
+What's the maximum difference between leg count for two animals with the same weight?
+
+Select Grammar
+    All possible combinations allowed in a select statement
+

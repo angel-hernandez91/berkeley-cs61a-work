@@ -1,0 +1,25 @@
+
+CS61A Lecture 1 Notes (Wed Jan 20, 2015)
+Course Logistics:
+	781 Soda 
+		10-12 Wednesday office hours & friday by appointment at (http://www.johndenero/meet).
+	Other OH:
+		11-5 M-Th & 11-1 Friday
+	Online text:
+		composingprograms.com
+
+Types of Expressions:
+	An expression describes a computation and evaluates to a value
+		i.e. 18+69, 6/23, sin(pi), etc...
+	All expressions can use function call notation
+		i.e. f(x)
+	Nesting of functions, inside first, then out. (Recall function composition from Abstract Algebra)
+
+Anatomy of a Call Expression
+	add		(	2	,	3	)
+	operator	operands
+	Evaluation procedure for call expressions:
+		1. Evaluate the operator and then the operand subexpressions
+		2. Apply the function that is the value of the operator subexpressions to the arguments that are the values of the operand subexpression.
+			note: subexpression is an expression within an expression.
+			Expression Trees show how these nested expressions are evaluated. 

@@ -1,0 +1,24 @@
+CS61a Lecture 5 Notes. January 30, 2014
+
+Announcements:
+	Guerrilla Section1 on higher-order functions is on Saturday 1/31 in 271 Soda. 4pm - 6pm
+
+Environments Enable Higher-Order Functions
+	Functions are first-class: Functions are values in our programming language
+
+	Higher-Order function: A function that takes a function as an argument value or A function that returns a function as a return value
+	
+	Environment diagrams allow us to describe how these work.
+
+A functions frame is the current frame in which the function is defined. 
+	*This occurs in nested functions that call functions
+
+The parent of a function is the frame in which it was defined. Every local frame has a parent frame (often global). The parent of a frame is the parent of the function called. 
+
+When functions return a global parameter ‘not found’ error. Why?
+	An environment is a sequence of frames.
+	The environment created by calling a top-level function...
+
+	If you want the functions to communicate with each other you need to nest. 
+
+

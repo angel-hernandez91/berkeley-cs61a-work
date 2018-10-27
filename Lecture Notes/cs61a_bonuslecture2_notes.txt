@@ -1,0 +1,83 @@
+cs61a Bonus Lecture 2 Notes
+
+Hog: The End Game
+    Computing the best thing do in particular senarios (Probabilities)
+    Question: What is the chance that I'll score at least k points rolling n six-sided dice?
+
+    Let:
+        S_n : Score from rolling n dice
+        t : A single outcome of rolling once
+
+        P(S_n \geq k) = \sum_{t =2}^6 P(t) \cdot P(S_{n-1} \geq k -t)
+            (We assume no pig out)
+            ie. The chance to score at least k in n rolls can be computed using tree recursion!
+                Sum over each possible dice outcome t that does not \emph{pig out}:
+                    The chance to roll t times the chance to score at least k - t points using n -1 rolls.
+
+    Base case: The chance to score at least 0 in 0 rolls is 1 (guaranteed)
+    Base case: The chance to score more than 0 in 0 rolls (impossible)
+
+Memoization: speeds up recursive function calls by storing previously computed function calls
+    import functools import lru_cache
+    memoize = lru_cache(None)
+    @memoize (@ is called a function decorator)
+
+
+Hog Strategies:
+    Backgound:
+        *stochastic(random elements)
+        *perfection information ?
+    Has a graph representation.
+    Information needed to represent a state:
+        (score0, score1, who)
+
+    This graph is a directed acyclic graph (DAG)
+        no cycles
+        sources lead to sinks
+        
+        bacon_score = score + bacon_strategy(score, opponent_score)
+        if bacon_score >= 100:
+            return 0
+
+Algorithms
+    minimax: 
+        minimize the worst-case senario (maximum loss)
+        maximize the minimun gain
+    Hog (expectiminimax):
+        randomness
+Creating an Optimal Strategy
+    Need to calculate what potential scores will turn out to be knowing what we have rolled and can roll
+    Notes: bacon at the end. bacon when opponents_score is a multiple of 9
+
+
+Contest Rules
+    Make a bid before the game begins
+    Most what we have breaks
+        we have incomplete information
+        But we can still make rational decisions
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

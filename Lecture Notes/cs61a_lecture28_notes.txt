@@ -1,0 +1,51 @@
+CS61a Lecture 28 Notes April 8, 2015
+
+Dynamic Scope
+    The way in which names are looked up in Scheme and Python is called the lexical scope
+    (or static scope)
+
+    Lexical scope: The parent of a frame is the environment in which the procedure was defined
+    Dynamic scope: The parent of a frame is the environment in which the procedure was called
+
+Tail Recursion
+    Functional Programming
+        Organized entire programs purely by functions
+        Properties:
+            All functions are pure functions
+            No re-assignment and no mutable data types
+            Name-value bindings are permanent
+        Advantages:
+            The value of an expression is independent of the order in which sub-expressions are
+            evaluated
+            Sub-expressions can safely be evaluated in parallel or on demand
+            Referential transparency: The value of an expression does not change when we
+            substitute one of its subexpression with the value of that subexpression
+    Tail Recursion allows us to execute Recursion in scheme in constant space, there is no 
+    need to store every frame of the recursive call
+
+Tail Calls
+    A procedure call that has not yet returned is active. Some precedure calls are tail calls.
+    A scheme interpreter should support an unbounded number of active tail calls using only a
+    constant amount of space.
+
+    A tail call is a call expression in a tail context:
+        The last body sub-expression in a lambda expression (i.e. a define, helper fcns)
+        Sub-expressions 2 & 3 in a tail context if expression
+        All non-predicate sub-expressions in a tail context cond
+        The last sub-expression in a tail context and or or
+        The last sub-expression in a tail context begin
+
+A call expression is not a tail call if more computation is still required in the calling
+procedure
+
+Linear recursive procedures can often be re-written to use tail calls
+
+General Computing Machine
+    Programs Define Machines
+        Programs specify the logical of a computational device
+    An interpreter can be parameterized to simulate any machine
+    Our Scheme interpreter is a universal machine
+    A bridge between the data objects that are manipulated by our programming language and the
+    programming language itself
+
+    An interpreter is nothing more than a program

@@ -1,0 +1,42 @@
+CS61a Lecture 12 Notes February 11, 2014
+
+Data Abstraction
+	Compound objects combine objects together
+		ie. A date, a geographic position
+	An abstract data type lets us manipulate compound objects as units
+	Isolate two parts of any program that uses data:
+		How to represent the data (as parts)
+		How data are manipulated (as units)
+	A methodology by which functions enforce an abstraction barrier between 
+	representation and use
+		-Allows us to change parts of a program without affecting the others.
+
+A constructor builds the data type
+A selector allows you to choose the item you want from the constructor
+
+We can create functions that are written entirely in terms of constructors and selectors
+
+Pairs
+A list literal:
+	Comma-separated expressions in brackets
+	i.e. pair = [1, 2]
+	
+	Unpacking a list
+	>>>x, y = pair
+	>>>x
+	1
+	Can also use the element selection operation
+	i.e. list[item]
+Lists are useful for constructor functions
+The selectors can pick out the elements of the list that we want
+
+Abstraction Barriers
+	Do not assume knowledge of the underlying constructor and selector function
+	when creating new functions
+
+Data Representation
+	How data is represented can be changed without the need to change the entire
+	program if the program was written without violating the abstraction barriers
+
+	What is Data?
+		We need to guarantee that constructor and selector functions work together		to specify the right behavior

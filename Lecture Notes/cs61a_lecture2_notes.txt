@@ -1,0 +1,47 @@
+January 23, 2014
+
+We can assign a function to a name
+	ie f = max
+And both f and max will take find the maximum of a sequence of numbers
+
+We can also take a function and assign it to another name. Note that this can result is disaster. 
+	i.e. max = 7, max(3, 4) results in an error “‘int’ is not callable”
+
+Names don’t change the function, they only change how you refer to them. 
+
+Example:
+	Call function i.e. 
+	def circ():
+		return 2*pi*radius
+
+	Changes accordingly depending on what radius is. Simply assign a radius, then call circ( )
+
+Environment Diagrams:
+	Frames keep track of what names mean.
+	
+Assignment Statements:
+	Execution rule for assignment statements:
+		1. Evaluate all expressions to the right of + from left to right
+		2. Bind all names to the left of = to those resulting 
+
+Defining Statements:
+	Functions bind names to expressions
+		ie. def <name>(<parameters>): (This is called the signature and indicates how many parameters a function takes)
+				return <expression>   (Body defines the computation performed when the function is applied)
+	Names bound in the current from of the function
+
+Calling User-Defined Functions
+	Procedure for calling/applying functions:
+		1. Add a local frame, forming a new environment
+		2. Bin the functions formal parameters to its arguments in that frame
+		3.Execute the body of the function in that new environment
+
+Looking up Names in Environments
+	Every expression is evaluated int he context of an environment
+	Why use multiple frames?
+		We have variables that are repeated in different frames, such as a name is the global environment and the same name in a local environment. These
+		multiple frames keep track of what is assigned to what.
+
+
+
+

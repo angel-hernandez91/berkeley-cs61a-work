@@ -1,0 +1,95 @@
+CS61a Lecture 16 Notes March 2, 2015
+
+Representation
+    String Representations
+        An object value should behave like the kind of data it is meant to represent
+        For instance, by producing a string representation of itself
+            Strings have human readable and python readable form
+                i.e. In python, all objects produce two string representations
+                     str: readble to humans
+                     repr: readable to Python interpreter
+        The str and repr strings are often the same, but not always
+
+The repr String for an Object
+    The repr function returns a Python expression (a string) that evaluates to an equal object
+    The result of calling repr on a value is what Python prints in an interaction session
+    Example:
+    >>>12e12
+    120000000000.0        #not what we typed in
+    >>>print(repr(12e12))
+    120000000000.0
+
+The str String for an Object
+    Human interpretable strings are useful as well:
+    The result of calling str on the value of an expression is what Python prints using the print function
+
+Polymorphic Functions
+    A function that applies to many different forms of data
+    str and repr are both polymorphic; they apply to any object
+    repr invokes a zero-argument method __repr__ on its argument
+    i.e. item.__repr__()
+
+    str invokes a zero-argument method __str__ on its argument
+    i.e. item.__str__()
+
+Implementing repr and str
+    The behavior of repr is slightly more complicated that invoking __repr__
+        *An instance attribute called __repr__ is ignored! Only class atrributes are found
+
+    The behavior os str is also complicated:
+        *An instance attribute called __str__ is ignored
+        *If not __str__ attribute is found, it used repr string
+        *str is a class, not a function
+
+Code:
+
+class Bear:
+    def __init__(self):
+        self.__repr__ = lambda: 'oski'
+        self.__str__ = lambda: 'this bear instance'
+
+    def __repr__(self):
+        return 'Bear()'
+
+    def __str__(self):
+        return 'a bear'
+        #this is human readable, and calling str will cause this to print
+
+def print_bear():
+    oski = Bear()
+    print(oski)             #prints class attribute for __str__ : a bear
+    print(str(oski))        #prints class attribute for __str__ : a bear
+    print(repr(oski))       #prints class attribute for __repr__: Bear(), note that print removes quotes
+    print(oski.__repr__())  #prints instance attribute for __repr__ : oksi, note that print removes quotes
+    print(oski.__str__())   #prints instance attribute for __str__ : this bear instance
+
+What do we conclude from this?
+    Calling str/repr(item) looks in class
+    Calling item.__str__/__repr__() looks in __init__ method (i.e. instance attributes)
+
+Interfaces
+    Message passing: Ojbects interact by looking up attributes on each other (passing messages)
+    The attribute look-up rules allow different data types to respond to the same message
+
+    A shared message (attribute name) that elicits similar behavior from different object classes
+    is a powerful method of abstraction
+
+    An interface is a set of shared messages, along with a specification of what they mean
+
+    Example:
+        Classes that implement __repr__ and __str__ methods that return Python and human-readable
+        strings implement an interface for producing string representations
+
+Property Methods
+    Often, we want the value of instance attributes to stay in sync
+    The @property decorator on a method designates that it will be called whenever it is looked
+    up on an instance
+
+    It allows zero-argument methods to be called without an explicit call expression
+
+
+
+
+
+
+

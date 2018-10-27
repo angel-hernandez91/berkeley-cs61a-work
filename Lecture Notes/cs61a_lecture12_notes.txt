@@ -1,0 +1,80 @@
+cs61a Lecture 12 Notes February 20, 2014
+
+Objects
+    Represent Information
+    They consist of data and behavior, bundled together to create abstractions
+    Objects  can represent things, but also properties, interactions, & processes
+    A type of object is called a class: classes are first class values in Python
+    Object-oriented programming:
+        A metaphor for organizing large programs
+        We think about small parts of these large program one at a time.
+        Special syntax that can improve the composition of programs
+    In Python, every value is an object.
+        All objects have attributes
+        A lot of data manipulation happens through object methods
+        Functions do one thing; objects do many related things
+
+Ex:
+from unicodedata import name, lookup
+    Characters
+
+Mutable lists
+    .pop() removes last element from the list and returns it
+        Can take in an index as a number. To remove an element at that index
+    .remove("name") removes element with the particular name given
+    .append() adds one element to a list
+    .extend() adds a list of elements to the end of a list
+    
+    These methods make changes to any list with the objects associated to that name
+
+    The same object can change in value throughout the course of computation
+    All names that refer to the same object are affected by a mutation
+    
+    Only objects of mutable types change change: lists & dictionaries
+        Changing a key name in a dictionary:
+            dict_name['new_key'] = dict_name.pop('og_key')
+
+Limitations on Dictionaries
+    Dictionaries are unordered collections of key-value pairs
+    Dictionary keys do have two restrictions:
+        A key of a dictionary cannot be a list or a dictionary (or any mutable type)
+        Two keys cannot be equal: There can be at most one value for a given key
+    The first restriction is tied to Python's underlying implementation of dictionaries
+    The second restriction is part of the dictionary abstraction
+
+Mutation Can Happen Within a Function Call
+    A function can change the value of any object in its scope
+
+Tuples
+    A tuple is a sequence but it is not mutable
+    tuple: (a, b, c, d)
+    Indexed the same way as list
+    Can operate on them similarly
+    2, is a tuple with one item
+    These can be used as dictionary keys
+    
+    The value of an expression can change because of changes in names or objects
+    An immutable sequence may still change if it contains a mutable value as an element
+
+Mutation: Sameness and Change
+    As long as we never modify objects, a compound object is just the totality of its pieces
+    A rational number is just its numerator and denominator
+    This view is no longer valid in the presense of change
+    A compound data object has an "identity" in addition to the pieces of which it is composed
+    A list is still "the same" list even if we change its contents
+    Conversely, we could have two lists that happen to have the same contents,
+        but are different
+
+Identity Operator
+    <exp0> is <exp1>
+    evaluates to True if both <exp0> and <exp1> evaluate to the same object
+    The == operator
+        Tells you if two things are the equal, but not identical
+
+
+
+
+
+
+
+

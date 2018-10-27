@@ -1,0 +1,83 @@
+CS61a Lecture 19 Notes March 9, 2015
+
+Measuring Efficiency
+    How can we measure how quickly a programs runs?
+
+Recursive Computation of the Fibonacci Sequence
+def fin(n):
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fib(n-2) + fib(n-1)
+
+    This creates a tree recursive process. This slow because we have large number leaves
+    in the trees
+We can use a function to count how many times a function is called
+
+def count(f):
+    def counted(*args):
+        counted.call_count += 1
+        return f(*args)
+    counted.call_count = 0 #you can add attributes to functions
+    return counted
+
+Memoization
+    General technique to make programs run more efficiently
+    If you're ever going to compute the value of a pure function, then remember that value and
+    save it for later use
+        Idea: Remember the results that have been computed before
+
+As a function:
+def memo(f):
+    cache = {}
+    def memoized(*args):
+        if args not in cache:
+            cache[args] = f(*args)
+        return cache[args]
+    return memoized
+
+The parts that skipped are the structures that have been previously computed. That is, if 
+we need to compute something a second time it is skipped because they are already stored in the 
+cache
+
+Tree Class
+    A Tree has an entry (any value) at its root and a list of branches
+    Ex: Entry and root are the same thing in this case
+    class Tree:
+        def __init__(self, entry, branches = ())
+            self. entry = entry
+            for branch in branches:
+                assert isinstance(branch, Tree)
+            self.branches = list(branches)
+
+Memoization doesn't make additional copies of the same structure, it accesses them in a cache.
+It gives us a away to access data in a different way (i.e. from the cache)
+
+Hailstone Trees
+    Pick a positive integer n as the start
+    If n is even, divide by 2
+    If n is odd, multiply it by 3 and add 1
+    Continue this process until n is 1
+
+    A hailstone tree is a representation of all possible hailstone sequences
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,24 @@
+CS61a Lecture 6 Notes, February 2, 2014
+
+Recursive Functions
+	Def: A function is called recursive if the body of that function calls itself, either directly or indirectly.
+
+	Implication: Executing the body of a recursive function may require apply that function
+
+Example: Digit Sums
+
+The Anatomy of a Recursive Function
+	The def statement header is similar to other functions
+	Conditional statements check for base cases
+	Base cases are evaluated without recursive calls
+	Recursive cases are evaluated with recursive calls
+
+For environment diagram each time the recursive function is called we create a new frame, and we keep descending into new frames until we get a definite return value that does not rely on having to compute other parts of the recursion.
+
+Solve the recursive function by making a simpler function on each recursive call. 
+
+Iteration vs Recursion
+	Iteration is a special case of recursion.
+
+Mutual Recursion: The Luhn Algorithm
+	

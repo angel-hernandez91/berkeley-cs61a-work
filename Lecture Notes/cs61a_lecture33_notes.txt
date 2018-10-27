@@ -1,0 +1,26 @@
+CS61a Lecture 33 April 20, 2015 (420 blaze it)
+
+Local Tables
+    A create table statement names a table globally
+    A with clause of a select statement names a table that is local to the statement
+
+    With Syntax
+        with
+            best(dog #can have multiple names here referring to different names in the table) as (
+                select 'eisenhower' union
+                select ' barack'
+                )
+        select <stuff>
+
+Recursive Local Tables
+    Local Tables can be Declared Recursively
+        An ancestor is your parent or an ancestor of your parent
+
+    Global Names for Resursive Tables
+        To create a table with a global name, you need to select the contents of the local table
+
+Limits on Recursive Select Statements
+    Recursive table definitions are only possible within a with clause
+    No mutual recursion: two or more tables cannot be defined in terms of each other
+    No tree recursion: the table being defined can only appear once in a from clause
+

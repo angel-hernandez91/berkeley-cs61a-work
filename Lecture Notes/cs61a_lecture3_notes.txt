@@ -1,0 +1,42 @@
+CS61a Lecture 3 Jan 26, 2014
+
+Frames are created whenever a user defined function is called. Note that there also frames called when we call built-in functions, but we don’t write those. We just say they exist in the global frame. Furthermore, each frame starts a new environment. 
+
+Parent=Global (Tells you where to go from the current frame, i.e. the frame preceded it, also note that everything ends at the global frame)
+
+Every expression is evaluated in the context of an environment. 
+
+A name evaluates to the value bound to that name in the earliest frame of the current environment in which that name is found. 
+
+Names have Different Meanings in Different Environments
+	-A call expression and the body of the function being called are evaluated in different environments. 
+	-Rule of Thumb:
+		*Non-indented lines evaluated in global frame
+		*Indented lines are evaluated in local frame
+
+from operator import truediv (/), floordiv(//), mod (%)
+
+doctest runs the examples given in the docstring of a function
+	for docstring do:
+	“”” Do this and this, blah blah blah. 
+	>>> execute blah
+	result
+	>>> execute blah 2
+	result 2
+	“””
+Doctests tests to make sure the function passes the example provided. 
+
+
+Statements:
+	A statement is executed by the interpreter to perform an action.
+	A suite is a sequence of statements, To execute them they are executed in order unless otherwise directed
+
+Conditional Statement:
+	Execution Rule:
+		Each clause is considered in order
+			1. Evaluate the header’s expression
+			2. If it is a true value, execute the suite & skip the remaining clauses. 
+
+	Execution Rule for while Statements:
+		1. Evaluate the header’s expression
+		2. If it is a true value, execute the (whole suite), then return to step 1. 

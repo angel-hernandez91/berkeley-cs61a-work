@@ -1,0 +1,45 @@
+CS61a Lecture 4 Notes Jan 28, 2014
+
+Announcements: Earn 1 Unit (Pass/no pass) by learning about optional additional topics
+	First Lecture: Thursday 1/29 5-6:30 pm in 2050 VLSB (Come there to learn more)
+
+
+The Fibonacci Sequence Iteration Example
+
+def fib(n):
+	pred, curr = 0, 1
+	k = 1
+	while k < n:
+		pred, curr = curr, pred + curr
+		k = k +1
+	return curr
+
+Characteristics of Functions
+	A function’s domain is the set of all inputs it might possibly take as arguments.
+
+	A function’s range is the set of output values it might possibly return.
+
+	A pure function’s behavior is the relationship it creates between input and output.
+
+Guide to Designing a Function
+	Give each function exactly one job.
+	Don’t repeat yourself (DRY). Implement a process just once, but execute it many times.
+	Define functions generally
+		Want functions to solve all problems that are of the same type.
+
+Assert Statement: Declares that some assignment is true
+	assert <condition>, <string>
+	if the condition is false, then message appears.
+
+Higher Order Functions
+	The common structure among functions may be a computational process, rather than a number. 
+	Takes another function as an argument.
+
+	Functions as Return Values
+		Locally Defined Functions: Functions defined within another functions bodies are bound to names in a local frame.
+			i.e. a def statement within a def statement
+
+
+
+
+

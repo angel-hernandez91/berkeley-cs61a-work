@@ -1,0 +1,47 @@
+CS61a Lecture 20 Notes March 13, 2015
+
+Midterm 2 Material Ends with this Lecture
+
+Sets
+    A built in container data type
+    Set literals are enclosed in braces {}
+    Intrinsic Properties:
+        Duplicate elements are removed on construction
+        Sets are unordered, just like dictionary entries
+    Example:
+        >>> s= {3, 2, 1, 4, ,4}
+        >>> s
+        {1, 2, 3, 4}
+    No indices
+    Has 'in' operator
+    Has len
+    Operations of Union and Intersection (called with dot notation)
+        Usual set theoretic operations
+
+Implementing Sets
+    What we should be able to do with a set
+        Membership testing
+        Union
+        Intersection
+        Adjoin
+            One set and an extra element
+
+Sets as Unordered Sequences
+    Proposal 1: A set is represented by a linked list that contains no duplicate items
+
+\theta(n^2) occurs when we have an inner process and an outer process
+
+    Proposal 2: A set is represented by a linked list with unique elements that is ordered
+                ordered from least to greatest
+
+    Proposal 3: A set is represented as a Tree with two branches. Each entry is:
+        Larger than all entries in its left branches 
+        Binary Trees
+
+Binary Trees
+    A binary tree is a tree that has a left branch and a right branch
+    Idea: Fill the place of a missing left branch with an empty tree
+    Idea 2: An instance of Binary Tree always has exactly two branches
+
+
+

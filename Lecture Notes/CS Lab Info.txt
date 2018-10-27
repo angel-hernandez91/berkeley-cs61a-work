@@ -1,0 +1,9 @@
+Rohan Chitnis
+cs61-atan@imail.eecs.berkeley.edu
+Office hours on Course website
+	-At Garbarini Lounge
+
+
+ssh cs61a-bvu@cory.eecs.berkeley.edu
+
+Moving files: scp lab01.py cs61a-bvu@cory.eecs.berkeley.edu: ~

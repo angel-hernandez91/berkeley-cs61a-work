@@ -1,0 +1,56 @@
+CS61a Lecture 30 Notes April 13, 2015
+
+Information Hiding
+    An attribute name that starts with one underscore is not meant to be referenced externally
+    This naming convention is not enforced, but is typically respected.
+    A programmer who designs and maintains a public module may change internal-use names
+    Starting a name with two underscores enforces restricted access, unless you are in in class itself
+
+    Names in Local Scope
+        A name bound in a local frame is not accessible to other environments, except those that extend the
+        frame
+    Singleton Objects
+        A singleton class is a class that only ever has one instance
+        NoneType, the class of None, is a singleton class. None is its only instance
+
+        For user-defined singletons, some programmers re-bind the class name to the instance
+        Bind name of class to instance of the class, so others use only one instance of it
+
+Streams (another implicit sequence)
+    A stream is a linked list, but the rest of the list is computed on demand
+    Once created, Streams and Links can be used interchangeably using first and rest methods
+        Ex:
+            Stream(anything, zero-argument function that returns a Stream or Stream.empty)
+            Note the similarity with Linked lists
+
+    This a form a lazy computation. Nothing is computed until it is explicitly called.
+    Errors are not raised until a value is requested and then computed
+
+    Integer Stream
+        An integer stream is a stream of consecutive integers
+
+        An integer stream starting at first is constructed from first and a function compute_rest
+        that returns the integer stream starting at first+1
+
+Stream Processing
+    Lazy computation and recursion
+    Recursive calls can be delayed by putting in a lambda function that is only called when the rest is
+    called by user
+    Streams can be defined in terms of themselves.
+        Need an inital element, and lazily computed using a lambda function to delay the computation
+
+Stream Implementation
+    A stream is a recursive list with an explicit first element and rest-of-the-list that is computed
+    lazily
+
+Higher Order Functions on Streams
+    Mapping a Function over Stream
+        Mapping a function over a stream applies a function only to the first element right away. The
+        rest is computed lazily.
+
+        The body is not executed until compute_rest is called
+
+    Filtering a Stream
+        When filtering a stream, processing continues until an element is kept in the output
+        Ex: The Seive of Eratostones
+

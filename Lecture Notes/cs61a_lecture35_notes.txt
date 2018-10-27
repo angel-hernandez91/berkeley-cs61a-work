@@ -1,0 +1,115 @@
+CS61a Lecture 35 Notes April 24, 2015
+
+The Case for Distributed Computing
+    Age example in class
+    Why distribute?
+        None of you knew the answer
+    What do we want from a distributed computing application?
+        Speed
+            I could ask everyone...too slow. So we compute in parallel
+        Reliability
+            What if the youngest was asleep?
+                (i.e. One of the computers loses power, but another computer can take over its job)
+        Security
+            Know the information you need, without asking for anything more
+    Trusting the answer?
+        Probably about right, but could be a little off
+    Age example 
+        Computation happened with many people (in parallel)
+        Communication
+
+The Universal Protocal
+    We call it IP (internet protocal)
+        We send packets of data
+        They can come in any order
+        They can be duplicated or lost
+        Why is it like this?
+            In some cases you don't care about all the packets. (i.e. in HD video streaming, not a big deal)
+            But for emails and file uploads it's an issues (this is resolved differently)
+Message Sequence of TCP Connection
+    Syncrhonization request (establishes packet numbering system)
+    Ack knowledgement & synchronization request sent back
+    Acknowledged
+    Data message A to B
+    Acknowledged
+    B to A
+    Acknowledged
+    Finsihed signal
+    Acknowledgement and finished signal
+    Acknowledgement
+
+    IP solves the problem of communicating with computers far away
+    TCP solves the problem of Reliability.
+
+The Client/Server Architecture
+    Just like ordering at a restaurant
+    The client sends a request
+    The server sends a response
+    Ex:
+        The internet is a client server architecture
+
+The Hypertext Transfer Protocol
+    The hypertext transwer protocol (HTTP) is a protocol designed to implement a client/server architecture (on top of TCP)
+    Browser issues a GET request to a server for the content (resource) at location
+    Server resonse contains more than just the resource itself:
+        Status, images, etc...
+
+
+Properties of a Client/Server Architecture  
+    Benefits:
+        Clean, server does all the work
+        Centralizing, the server allows it to be smart
+            Reuse computation if multiple requests are made
+            Knows the state of all the clients
+                Precomputation to serve you faster
+    Protential Liabilities
+        What happens when the server fails?
+            Gone
+        What happens when you have a ton of clients?
+            System goes down, slow
+        How can you avoid this?
+            Server's can be distributed (as a client we don't actual care)
+    Common use cases:
+        Datebases: the database serves responses to query requests (like SQL)
+        Internet file and resource transfer: HTTP, FTP, email (IMAP)
+
+Peer-to-Peer Architecture
+    Every single client knows how to do things.
+    There is no centralization
+    Everyone contributes in the form of processing, storage, and the network capacity
+    They can also help relay messages to each other.
+
+Network Structure Concerns
+    You have a network of peers, you have to resolve the problems of IP/TCP does
+    Example: Skype
+        Skype is a VOIP system that uses a hybrid peer-to-peer architecture
+        Login and contracts are handled via a centralized server
+        Conversations between two computers that cannot send messages to each other directly are relayed through suppernods
+        Any skype client with its own ip address may be a supernode
+
+        Clients behind firewalls cannot communicate directly. A client not behind a firewall may be used as a supernode.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

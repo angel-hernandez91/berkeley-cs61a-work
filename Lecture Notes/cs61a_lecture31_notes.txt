@@ -1,0 +1,77 @@
+CS61a Lecture 31 Notes April 15, 2015
+
+Lecture: Information Hiding
+
+An attribute name that starts with one underscore is not meant to be referenced externally.
+    _ implies that "don't reference directly, they may change"
+    Not special properties, not part of symantics
+
+The naming convention is not enforced, but is typically respected
+A programmer who designs and maintains a public module may change internal-use names
+Starting a name with two underscores enforces restricted access from outside the class
+
+Names in Local Scope
+    A name bound in a local frame is not accessible to other environments, except those that
+    extend the frame
+    These also hid names from other users
+    Those in yields, generator functions
+
+Singleton Objects
+    A singleton class is a class that only ever has one instance
+    i.e.
+    NoneType, the class of None, is a singleton class; None is its only instance
+    For user-defined singletons, some programmers re-bind the class name to the instance
+        Naming a class, then assigning the name of the class to an instance of the class
+        The original binding is now lost (kind of), hides the class from the user
+
+Stream Implementation
+    A stream is a linked list with an explicit first element and a-rest-of-the-list that is
+    computed lazily.
+
+Lecture: Declarative Languages
+    Database Management Systems
+        Database management systems (DBMS) are important, heavily used, and interesting!
+        A table is a collection of records, which are rows that have a value for each column
+        The Structured Query Language (SQL) is perhaps the most widely used programming language
+        SQL is a declarative programming language
+
+    Declarative Programming
+        In declarative languages:
+            A program is a description of the desired result
+            The interpreter figures out how to generate the result
+    Imperative languages:
+        In imperative languages such as python and scheme:
+            A program is a description of computational processes
+            The interpreter carries out execution/evaluation rules
+; Semicolon ends and SQL statements (note that statements can span several lines)
+
+SQL Overview
+    The SQL language is an ANSI and ISO standard, but DBMS implement custom variants
+        A select statement creates a new table, either from scratch or by projecting a table
+        A create table statement gives a glocal name to a table
+        Lots of other statements exist:
+            Analyze, delete, explain, insert, replace, update
+        Most of the important things are in select
+
+Getting started with SQL
+    Install sqlite (version 3.8.3 or later)
+
+Selecting Value Literals
+    A select statement always includes a comma-separated list of column descriptions
+    A column description is an expression, optionally followed by as and column name
+        select [expression] as [name], [expression] as [name];
+    Selecting literals creates a one-row table
+    The union of two select statements is a table containing the rows of both of their results
+
+Naming Tables
+    SQL is often used as an interactive language
+    The result of a select statment is displayed to the user, but not stored
+    A create table statement gives the result a name
+        create table [name] as [select statement];
+
+Projecting Tables
+    A select statment can specify an input table using a from clause:
+        select [expression] as [name], [expression] as [name], ...;
+        select [columns] from [table] where [condition] order by [order];
+    Column descriptions determine how each input row is projected to a result row
+

@@ -1,0 +1,32 @@
+CS61a Lecture 14 Notes February 23, 2015
+
+Mutable Functions
+	Functions that change when they are called.
+
+Non-Local Statements
+	Syntax: nonlocal <name>
+		What does nonlocal mean?
+			Changes to <name> will happen for the parent frame (i.e. a nonlocal 			frame) instead of the local frame
+
+	Effect: Future assignments to that name change its pre-existing binding in the first non-local frame (enclosing scope) of the current environment in which that name is bound.
+
+From the Python 3 language reference:
+	Name listed in a nonlocal statement must refer to pre-existing bindings in an enclosing scope.
+		*Names must have already been used
+
+	Names listed in a nonlocal statement must not collide with pre-existing bindings in the local scope
+		*Can’t declare something already defined in the local frame as non-local
+
+Python Particulars
+	Python pre-computes which frame contains each name before executing the body of a function
+
+	Within the body of a function, all instances of a name must refer to the same frame
+
+Mutable Values & Persistent Local State
+	Mutable values can be changed without a nonlocal statement
+
+Referential Transparency, Lost
+	Expressions are referentially transparent if substituting an expression with its value does not change the meaning of a program
+
+	Mutation operations violate the condition of referential transparency because they do more than just return a value, they change the environment. 
+
